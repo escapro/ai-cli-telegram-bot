@@ -1,0 +1,15 @@
+[Unit]
+Description=Telegram Claude CLI Bot
+After=network.target
+
+[Service]
+Type=simple
+User=ruslan
+WorkingDirectory=/home/ruslan/telegram-bot
+EnvironmentFile=/home/ruslan/telegram-bot/.env
+ExecStart=/usr/bin/python3 /home/ruslan/telegram-bot/bot.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

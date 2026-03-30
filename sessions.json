@@ -1,0 +1,22 @@
+{
+  "current": "c897d8eb-4eff-4a87-8e54-c0716f47aa72",
+  "sessions": {
+    "096cfa9a-a47a-4f78-81d0-ad6e07c2283a": {
+      "name": "Привет, как дела",
+      "created": "2026-03-31T00:37:30+04:00"
+    },
+    "0e48fba1-c405-4a14-a4ca-6abc7a7ef47f": {
+      "name": "Привет",
+      "created": "2026-03-31T00:53:33+04:00"
+    },
+    "c897d8eb-4eff-4a87-8e54-c0716f47aa72": {
+      "name": "Привет",
+      "created": "2026-03-31T00:58:07+04:00"
+    }
+  },
+  "model": "opus",
+  "mode": "thinking",
+  "thinking": true,
+  "plain": false,
+  "fast": false
+}
