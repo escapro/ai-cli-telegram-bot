@@ -22,6 +22,10 @@ WORK_DIR = getenv("WORK_DIR", "/home/ruslan")
 CLAUDE_TIMEOUT = int(getenv("CLAUDE_TIMEOUT", "300"))
 SESSIONS_FILE = Path(__file__).parent / "sessions.json"
 MAX_MESSAGE_LENGTH = 4096
+# stream-json отдаёт одно событие на строку; строка (крупный Read, вывод Bash)
+# легко превышает дефолтный лимит StreamReader в 64 КБ, из-за чего readline()
+# падает с "Separator is not found, and chunk exceed the limit".
+STREAM_LIMIT = 64 * 1024 * 1024  # 64 МБ на строку
 AVAILABLE_MODELS = ["opus", "sonnet", "haiku"]
 DEFAULT_MODEL = "sonnet"
 
@@ -109,6 +113,7 @@ async def call_claude_streaming(
         stdout=asyncio.subprocess.PIPE,
         stderr=asyncio.subprocess.PIPE,
         cwd=WORK_DIR,
+        limit=STREAM_LIMIT,
     )
     proc.stdin.write(prompt.encode())
     await proc.stdin.drain()
